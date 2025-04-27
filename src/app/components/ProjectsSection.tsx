@@ -36,15 +36,6 @@ const projects = [
   },
 ];
 
-const badgeColors = [
-  'bg-gray-200 text-gray-800',
-  'bg-gray-300 text-gray-900',
-  'bg-gray-100 text-gray-700',
-  'bg-gray-200 text-gray-800',
-  'bg-gray-300 text-gray-900',
-  'bg-gray-100 text-gray-700',
-];
-
 const ProjectsSection = () => {
   const router = useRouter();
   const [majorOnly, setMajorOnly] = useState(true);
@@ -71,7 +62,7 @@ const ProjectsSection = () => {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {projects
-            .filter((p) => (majorOnly ? true : true))
+            .filter(() => (majorOnly ? true : true))
             .map((p) => (
               <div
                 key={p.slug}
