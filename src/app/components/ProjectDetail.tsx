@@ -1,6 +1,17 @@
 import React from 'react';
 
-const projectData: Record<string, any> = {
+interface ProjectData {
+  title: string;
+  img: string;
+  intro: string;
+  features: string[];
+  tech: string[];
+  contribution: string;
+  troubleshooting: string;
+  screenshots: string[];
+}
+
+const projectData: Record<string, ProjectData> = {
   knockdog: {
     title: 'knockDog: 독독',
     img: '/project1.png',
@@ -50,38 +61,38 @@ export default function ProjectDetail({ slug }: { slug: string }) {
     <div className="max-w-3xl mx-auto py-16 px-4 font-pretendard">
       {/* 1. 프로젝트 사진과 간단한 소개 */}
       <div className="bg-white rounded-2xl shadow-md p-8 mb-8 flex flex-col items-center">
-        <h1 className="text-3xl font-extrabold mb-4 text-violet-700">{p.title}</h1>
+        <h1 className="text-3xl font-extrabold mb-4 text-gray-900">{p.title}</h1>
         <img src={p.img} alt={p.title} className="w-full max-w-md rounded-xl mb-6 shadow" />
         <p className="text-lg text-gray-700 mb-2">{p.intro}</p>
       </div>
       {/* 2. 주요 기능 및 특징 */}
-      <div className="bg-violet-50 rounded-xl p-6 mb-6 shadow-sm">
-        <h2 className="text-xl font-bold mb-2 text-violet-600">주요 기능 및 특징</h2>
+      <div className="bg-gray-50 rounded-xl p-6 mb-6 shadow-sm">
+        <h2 className="text-xl font-bold mb-2 text-gray-900">주요 기능 및 특징</h2>
         <ul className="list-disc list-inside text-gray-700 space-y-1">
-          {p.features.map((f: string) => <li key={f}>{f}</li>)}
+          {p.features.map((f) => <li key={f}>{f}</li>)}
         </ul>
       </div>
       {/* 3. 사용 기술 및 언어 */}
-      <div className="bg-sky-50 rounded-xl p-6 mb-6 shadow-sm">
-        <h2 className="text-xl font-bold mb-2 text-sky-600">사용 기술 및 언어</h2>
+      <div className="bg-gray-50 rounded-xl p-6 mb-6 shadow-sm">
+        <h2 className="text-xl font-bold mb-2 text-gray-900">사용 기술 및 언어</h2>
         <ul className="flex gap-3 flex-wrap">
-          {p.tech.map((t: string) => <li key={t} className="inline-block rounded-full px-4 py-2 text-sm font-semibold shadow-sm border border-white bg-sky-100 text-sky-700">{t}</li>)}
+          {p.tech.map((t) => <li key={t} className="inline-block rounded-full px-4 py-2 text-sm font-semibold shadow-sm border border-white bg-gray-100 text-gray-700">{t}</li>)}
         </ul>
       </div>
       {/* 4. 작업 기여도 */}
-      <div className="bg-yellow-50 rounded-xl p-6 mb-6 shadow-sm">
-        <h2 className="text-xl font-bold mb-2 text-yellow-600">작업 기여도</h2>
+      <div className="bg-gray-50 rounded-xl p-6 mb-6 shadow-sm">
+        <h2 className="text-xl font-bold mb-2 text-gray-900">작업 기여도</h2>
         <p className="text-gray-700">{p.contribution}</p>
       </div>
       {/* 5. Trouble Shooting */}
-      <div className="bg-pink-50 rounded-xl p-6 mb-6 shadow-sm">
-        <h2 className="text-xl font-bold mb-2 text-pink-600">Trouble Shooting</h2>
+      <div className="bg-gray-50 rounded-xl p-6 mb-6 shadow-sm">
+        <h2 className="text-xl font-bold mb-2 text-gray-900">Trouble Shooting</h2>
         <p className="text-gray-700">{p.troubleshooting}</p>
       </div>
       {/* 6. 작업화면 */}
       <div className="bg-white rounded-xl p-6 shadow flex flex-wrap gap-4 justify-center">
         <h2 className="w-full text-xl font-bold mb-2 text-gray-700">작업화면</h2>
-        {p.screenshots.map((src: string, i: number) => (
+        {p.screenshots.map((src, i) => (
           <img key={i} src={src} alt={`screenshot${i}`} className="w-56 rounded-lg shadow" />
         ))}
       </div>
